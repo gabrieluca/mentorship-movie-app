@@ -41,19 +41,19 @@ class _HomePageState extends State<HomePage> {
               child: Image.asset(
                 'assets/images/fundo_pipoca.jpg',
                 fit: BoxFit.cover,
-                opacity: AlwaysStoppedAnimation(0.1),
+                opacity: kImageOpacity,
               ),
             ),
             Center(
               child: SingleChildScrollView(
-                padding: EdgeInsets.all(20.0),
+                padding: kCenterPadding,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(
+                    const Center(
                       child: Text('Filmes Flutter', style: kTitleTextStyle),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50.0,
                     ),
                     Center(
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 30.0, color: Colors.blue.shade100),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50.0,
                     ),
                     TextField(
@@ -79,8 +79,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.blue, width: 2.0),
+                          borderSide: kTFBorderSide,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         errorText: errorTextEmail,
@@ -98,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                         FocusScope.of(context).requestFocus(nodePassword);
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
                     TextField(
@@ -123,8 +122,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.blue, width: 2.0),
+                          borderSide: kTFBorderSide,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         errorText: errorTextPassword,
@@ -141,12 +139,12 @@ class _HomePageState extends State<HomePage> {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40.0,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(150.0, 50.0),
+                        fixedSize: kButtonSize,
                         elevation: 5.0,
                         disabledBackgroundColor: Colors.grey,
                         shadowColor: Colors.black,
@@ -155,11 +153,9 @@ class _HomePageState extends State<HomePage> {
                               passwordController.value.text.length < 8)
                           ? null
                           : (() {
-                              setState(() {
-                                print('submited');
-                              });
+                              setState(() {});
                             }),
-                      child: Text(
+                      child: const Text(
                         'Sign in',
                         style: TextStyle(
                           fontSize: 20.0,
