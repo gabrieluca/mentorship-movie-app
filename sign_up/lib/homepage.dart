@@ -15,9 +15,9 @@ class _HomePageState extends State<HomePage> {
   String? errorTextEmail;
   String? errorTextPassword;
   final nodePassword = FocusNode();
-  String textPassword = 'Must have at least 8 characters';
+  final String textPassword = 'Must have at least 8 characters';
 
-  String? errorTextEmailOn() {
+  String? get errorTextEmailOn {
     if (emailController.value.text.isEmpty) {
       return 'Can\'t be empty';
     } else {
@@ -27,6 +27,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final sizeWidth = MediaQuery.of(context).size.width;
+    final sizeHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
       body: GestureDetector(
@@ -36,8 +38,8 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              width: sizeWidth,
+              height: sizeHeight,
               child: Image.asset(
                 'assets/images/fundo_pipoca.jpg',
                 fit: BoxFit.cover,
@@ -85,16 +87,17 @@ class _HomePageState extends State<HomePage> {
                         errorText: errorTextEmail,
                       ),
                       onTap: () {
-                        errorTextEmail = errorTextEmailOn();
+                        errorTextEmail = errorTextEmailOn;
                       },
                       onChanged: (value) {
                         setState(() {
-                          errorTextEmail = errorTextEmailOn();
+                          errorTextEmail = errorTextEmailOn;
                         });
                       },
                       onEditingComplete: () {
-                        errorTextEmail = null;
-                        FocusScope.of(context).requestFocus(nodePassword);
+                        setState(() {
+                          FocusScope.of(context).requestFocus(nodePassword);
+                        });
                       },
                     ),
                     const SizedBox(
@@ -135,8 +138,9 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                       onEditingComplete: () {
-                        errorTextPassword = null;
-                        FocusScope.of(context).requestFocus(FocusNode());
+                        setState(() {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                        });
                       },
                     ),
                     const SizedBox(
